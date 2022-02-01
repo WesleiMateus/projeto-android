@@ -16,8 +16,8 @@
   --color-5: #063d1e;
 
   --default-font: Arial, Verdana, Helvetica, sans-serif;
-  --featured-font: "Bebas Neue", cursive, sans-serif;
-  --title-font: "Android", cursive, sans-serif;
+  --featured-font: "Bebas Neue", sans-serif;
+  --title-font: "Android", sans-serif;
 }
 
 * {
