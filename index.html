@@ -1,211 +1,267 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido de Namoro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #1a1a1a;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><path fill="#ff0080" d="M15 0C7.015 0 0 7.015 0 15s7.015 15 15 15 15-7.015 15-15S22.985 0 15 0zm-3.5 16.25c-1.15 0-2.125-.675-2.125-2.125 0-1.15.675-2.125 2.125-2.125 1.15 0 2.125.675 2.125 2.125 0 1.15-.675 2.125-2.125 2.125zm3.5-9c-1.15 0-2.125-.675-2.125-2.125 0-1.15.675-2.125 2.125-2.125 1.15 0 2.125.675 2.125 2.125 0 1.15-.675 2.125-2.125 2.125z"/></svg>'), auto; /* Define o coração como cursor */
+      background-size: cover; /* Ajusta o fundo para cobrir a tela */
+      animation: fundo-animacao 10s linear infinite; /* Adiciona animação ao fundo */
+    }
 
-    <!--============= Favicon ==============-->
-    <link
-      rel="shortcut icon"
-      href="imagens/favicon.ico"
-      type="image/x-icon"
-    />
+    @keyframes fundo-animacao {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
 
-    <!--============== CSS ===============-->
-    <link rel="stylesheet" href="css/style.css" />
+    h1 {
+      color: #ff0080;
+      margin-top: 100px;
+      font-size: 36px;
+    }
 
-    <title>Android Documentary</title>
-  </head>
-  <body>
-    <header>
-      <h1 id="first-text">Curiosidades de Tecnologia</h1>
-      <p id="p">
-        Tudo aquilo que você sempre quis saber sobre o mundo Tech, em um único
-        lugar!
-      </p>
-    </header>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Notícias</a>
-      <a href="#">Contato</a>
-    </nav>
-    <main>
-      <article>
-        <h1>História do Mascote do Android</h1>
+    .pedido {
+      margin-bottom: 50px;
+    }
 
-        <p>
-          Provavelmente você sabe que o sistema operacional
-          <strong>Android</strong>, mantido pelo <strong>Google</strong> é um
-          dos mais utilizados para dispositivos móveis em todo o mundo. Mas
-          tavez você não saiba que o seu simpático mascote tem um nome e uma
-          história muito curiosa? Pois acompanhe esse artigo para aprender muita
-          coisa sobre esse robozinho.
-        </p>
+    .botoes {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
 
-        <h2>A primeira versão</h2>
+    .botao {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 20px;
+      background-color: #ff0080;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin: 0 10px;
+      transition: transform 0.3s;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
-        <p>
-          A primeira tentativa de criar um mascote surgiu em 2007 e veio de um
-          desenvolvedor chamado
-          <a
-            href="https://androidcommunity.com/dan-morrill-shows-us-the-android-mascot-that-almost-was-20130103/"
-            target="_blank"
-            class="externo"
-            >Dan Morrill</a
-          >. Ele conta que abriu o
-          <a href="https://inkscape.org/pt-br/" target="_blank" class="externo"
-            >Inkscape</a
-          >
-          (software livre para vetorização de imagens) e criou sua própria
-          versão de robô. O objetivo era apenas personificar o sistema apenas
-          para a a sua equipe, não existia nenhuma solicitação da empresa para a
-          criação de um mascote.
-        </p>
+    .botao:hover {
+      transform: scale(1.1);
+    }
 
-        <!--Pictures-->
-        <picture>
-          <source
-            media="(max-width: 670px)"
-            srcset="imagens/droidcell.png"
-          />
-          <img src="imagens/droidpc.png" alt="Imagens Droid Pc" />
-        </picture>
+    .animacao {
+      display: none;
+      margin-top: 50px;
+      font-size: 24px;
+      color: #ff0080;
+      animation: pulsar 2s infinite;
+    }
 
-        <p>
-          Essa primeira versão bizarra até foi batizada em homenagem ao seu
-          criador: seriam os
-          <strong>Dandroids</strong>.
-        </p>
+    @keyframes pulsar {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
 
-        <h2>Surge um novo mascote</h2>
+    .coracao {
+      position: absolute;
+      font-size: 30px; /* Tamanho do coração */
+      color: #ff0080;
+      animation: explodir 0.5s ease-out forwards;
+      pointer-events: none; /* Impede que o cursor interfira em outros elementos */
+    }
 
-        <p>
-          A ideia de ter um mascote foi amadurecendo e a missão foi passada para
-          uma profissional da área. A ilustradora Russa
-          <a
-            href="https://www.irinablok.com/android"
-            target="_blank"
-            class="externo"
-            >Irina Blok</a
-          >, também funcionária do Google, ficou com a missão de representar o
-          pequeno robô de uma maneira mais agradável.
-        </p>
+    /* Estilos para corações explodindo com diferentes cores e velocidades */
+    .coracao.vermelho {
+      color: red;
+      animation: explodir-vermelho 1s ease-out forwards;
+    }
+    .coracao.azul {
+      color: blue;
+      animation: explodir-azul 2s ease-out forwards;
+    }
+    .coracao.verde {
+      color: green;
+      animation: explodir-verde 1.5s ease-out forwards;
+    }
 
-        <!--Picture-->
-        <picture id="muie">
-          <source media="(max-width: 670px)" srcset="imagens/muie.jpg" />
-          <img src="imagens/muie-fina.jpg" alt="Russa Irina Block" />
-        </picture>
+    @keyframes explodir {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.5);
+      }
+    }
 
-        <p>
-          A ideia principal da Irina era representar tudo graficamente com
-          poucos traços e de forma mais chapada. O desenho também deveria gerar
-          identificação rápida com quem o olha. Surgiu então o
-          <strong>Bugdroid</strong>, o novo mascote do Android.
-        </p>
+    @keyframes explodir-vermelho {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
 
-        <!--Picture-->
-        <img
-          src="imagens/droid.png"
-          alt="Imagem de uma pessoa dando a mão para um android"
-          class="little"
-        />
+    @keyframes explodir-azul {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.2);
+      }
+    }
 
-        <p>
-          A principal inspiração para os traços do novo
-          <strong>Bugdroid</strong> veio daqueles bonequinhos que ilustram
-          portas de banheiro para indicar o gênero de cada porta. Conta a lenda
-          que a artista estava criando em sua mesa no escritório do
-          <strong>Google</strong> e olhou para o lado dos banheiros e a
-          identificação foi imediata: simples, limpo, objetivo.
-        </p>
+    @keyframes explodir-verde {
+      0% {
+        opacity: 1;
+        transform: scale(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.8);
+      }
+    }
 
-        <div class="video">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/l2UDgpLz20M"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
+    #nao { /* CSS para o botão "Não" */
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: transform 0.2s, background-color 0.2s;
+    }
 
-        <aside>
-          <h3>Quer aprender mais?</h3>
+    #nao:hover {
+      transform: scale(1.2);
+      background-color: #f00;
+    }
 
-          <p>
-            Outro assunto curioso em relação ao Android é que cada versão sempre
-            foi nomeada em homenagem a um doce, em ordem alfabética a partir da
-            versão 1.5 até a 9.0.
-          </p>
+  </style>
+</head>
+<body>
+  <div class="pedido">
+    <h1>Quer namorar comigo?</h1>
+  </div>
+  <div class="botoes">
+    <button id="sim" class="botao">Sim</button>
+    <button id="nao" class="botao">Não</button>
+  </div>
+  <div id="animacao" class="animacao">
+    Parabéns! Você aceitou o pedido de namoro. 🎉
+  </div>
 
-          <ul>
-            <li>1.5 - <abbr title="Bolo de Copo">Cupcake</abbr></li>
-            <li>1.6 - <abbr title="Rosquinha">Donut</abbr></li>
-            <li>3.0 - <abbr title="Bomba">Eclair</abbr></li>
-            <li>2.2 - <abbr title="Iourgut Congelado">Froyo</abbr></li>
-            <li>2.3 - <abbr title="Biscoito de Gengibre">Gingerbread</abbr></li>
-            <li>3.0 - <abbr title="Favo de Mel">Honeycomb</abbr></li>
-            <li>4.0 - <abbr title="">Ice Cream Sandwich</abbr></li>
-            <li>4.1 - <abbr title="Jujuba">Jelly Bean</abbr></li>
-            <li>4.4 - <abbr title="KitKat">KitKat</abbr></li>
-            <li>5.0 - <abbr title="Pirulito">Lolipop</abbr></li>
-            <li>6.0 - <abbr title="Marshmallow">Marshmallow</abbr></li>
-            <li>7.0 - <abbr title="Torrone">Nougat</abbr></li>
-            <li>8.0 - <abbr title="Oreao">Oreo</abbr></li>
-            <li>9.0 - <abbr title="Torta">Pie</abbr></li>
-          </ul>
-          <!--Fim da Lista-->
+  <script>
+    const simButton = document.getElementById('sim');
+    const naoButton = document.getElementById('nao');
+    const animacaoDiv = document.getElementById('animacao');
 
-          <p>
-            Infelizmente, o <strong>Android Q</strong> não existiu, pois o
-            Google resolveu pôr fim a essa divertida prática e começou a usar
-            numerações, o que deu origem ao Android 10.
-          </p>
+    // Função para mover o botão "Não" aleatoriamente
+    function moverBotaoNao() {
+      const maxX = window.innerWidth - naoButton.offsetWidth;
+      const maxY = window.innerHeight - naoButton.offsetHeight;
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
 
-          <p>
-            Acesse aqui o site
-            <a
-              href="https://www.android.com/intl/en_uk/history/#/dunut"
-              target="_blank"
-              class="externo"
-              >Android History</a
-            >
-            para conhecer a sequência das versões "adocicadas" e o que cada uma
-            trouxe para o sistema Android.
-          </p>
-        </aside>
-        <!--extra-->
+      naoButton.style.left = `${newX}px`;
+      naoButton.style.top = `${newY}px`;
+    }
 
-        <p>
-          Então é isso! Espero que você tenha gostado do nosso artigo com essa
-          curiosidade sobre o sistema
-          <a href="#" target="_blank" class="externo">Android</a> e seu
-          simpático mascote.
-        </p>
-      </article>
-      <!--article-->
-    </main>
-    <!--main-->
+    // Cria corações ao clicar ou tocar na tela com diferentes estilos
+    function criarCoracao(x, y) {
+      const coracao = document.createElement('div');
+      coracao.classList.add('coracao');
 
-    <footer>
-      <!--Footer-->
+      // Define a cor e a animação do coração aleatoriamente
+      const cores = ['vermelho', 'azul', 'verde'];
+      const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+      coracao.classList.add(corAleatoria);
 
-      <p>
-        Site criado por
-        <a
-          href="https://www.youtube.com/channel/UCeDgemukfByvRif744-Is-w"
-          target="_blank"
-          >Weslei Mateis</a
-        >
-        para o
-        <a href="https://www.youtube.com/CursoemVideo" target="_blank"
-          >Curso em Video.</a
-        >
-      </p>
-    </footer>
-  </body>
+      // Define o emoji do coração aleatoriamente
+      const emojis = ['❤️', '🩷', '🧡', '💛', '💚', '💙', '🩵', '💜', '🤎', '🖤', '🩶', '🤍', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '❤️‍🔥', '❤️‍🩹', '🫶', '♥️', '💌'];
+      const emojiAleatorio = emojis[Math.floor(Math.random() * emojis.length)];
+      coracao.textContent = emojiAleatorio;
+
+      coracao.style.left = `${x}px`;
+      coracao.style.top = `${y}px`;
+
+      document.body.appendChild(coracao);
+
+      // Remove o coração após a animação
+      setTimeout(() => {
+        coracao.remove();
+      }, 1500);
+    }
+
+    // Define o fundo da tela com imagem ou gradiente
+    document.body.style.backgroundImage = "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fheart%2Bbackground&psig=AOvVaw2o0bQ1r99W_zZ8jI_N2O8d&ust=1700525176907000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCNjk99G16_4CFQAAAAAdAAAAABAD') "; // Substitua por sua imagem ou gradiente
+
+    // Temporizador para exibir a frase "Clique aqui!"
+    let timer = setTimeout(() => {
+      // Aqui você pode adicionar uma nova mensagem, animação ou outra ação
+      // Exemplo:
+      // alert("Você está demorando muito para responder! 😅"); 
+    }, 15000); 
+
+    // Eventos
+    simButton.addEventListener('click', () => {
+      simButton.style.display = 'none';
+      naoButton.style.display = 'none';
+      animacaoDiv.style.display = 'block';
+      clearTimeout(timer);
+    });
+
+    // Move o botão "Não" ao passar o cursor próximo
+    document.addEventListener('mousemove', (e) => {
+      const naoButtonRect = naoButton.getBoundingClientRect();
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+
+      const distance = Math.sqrt(
+        Math.pow(mouseX - (naoButtonRect.left + naoButtonRect.width / 2), 2) +
+        Math.pow(mouseY - (naoButtonRect.top + naoButtonRect.height / 2), 2)
+      );
+
+      if (distance < 100) {
+        moverBotaoNao();
+      }
+    });
+
+    // Posiciona o botão "Não" ao lado do botão "Sim"
+    naoButton.style.left = `${simButton.offsetLeft + simButton.offsetWidth + 10}px`;
+    naoButton.style.top = `${simButton.offsetTop}px`;
+
+    // Cria corações ao clicar ou tocar na tela com diferentes estilos
+    document.addEventListener('click', (e) => {
+      criarCoracao(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      criarCoracao(touch.clientX, touch.clientY);
+    });
+
+  </script>
+</body>
 </html>
